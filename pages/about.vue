@@ -7,7 +7,7 @@
     <div class="flex flex-wrap justify-center">
       <div class="w-12/12">
         <img
-          src="/assets/images/me.jpg"
+          src="@/assets/images/me.jpg"
           alt="Jeroen Theunissen"
           class="shadow align-middle border-none rounded-t-full grayscale"
         />
