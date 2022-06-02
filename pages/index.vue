@@ -1,8 +1,21 @@
 <script setup>
-const { data: blogs } = await useAsyncData("blog", () =>
+const { data } = await useAsyncData("blog", () =>
   queryContent("/blog").sort({ createdAt: 0 }).find()
 );
+
+const date = (value) =>
+  new Date(value).toLocaleDateString("en-us", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+
+const blogs = data.value.map((blog) => ({
+  ...blog,
+  createdAt: date(blog.createdAt),
+}));
 </script>
+
 <template>
   <main>
     <Head>
@@ -24,7 +37,7 @@ const { data: blogs } = await useAsyncData("blog", () =>
               <h1 class="md:text-2xl text-xl p-1 font-bold">
                 {{ blog.title }}
               </h1>
-              <p class="md:text-lg text-md3 p-1">{{ blog.description }}</p>
+              <p class="md:text-lg p-1">{{ blog.description }}</p>
             </div>
             <div class="col-start-10 col-span-3 self-center justify-self-end">
               <img :src="blog.introImage" class="w-20 h-20" />
@@ -37,13 +50,13 @@ const { data: blogs } = await useAsyncData("blog", () =>
               {{ blog.category }}
             </p>
             |
-            <p class="text-italic text-sm p-2">{{ blog.createdAt }}</p>
+            <p class="text-italic text-sm p-2">
+              {{ blog.createdAt }}
+            </p>
             |
-            <NuxtLink :to="blog._path"
-              ><p class="text-italic text-sm p-2 hover:cursor-pointer">
-                Read more...
-              </p>
-            </NuxtLink>
+            <p class="text-italic text-sm p-2 hover:cursor-pointer">
+              Read more...
+            </p>
           </div>
         </NuxtLink>
       </div>
