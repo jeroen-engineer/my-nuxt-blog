@@ -1,5 +1,5 @@
 <script setup>
-const { data } = await useAsyncData("blog", () =>
+const { data: blogs } = await useAsyncData("blog", () =>
   queryContent("/blog").sort({ createdAt: 0 }).find()
 );
 
@@ -9,11 +9,6 @@ const date = (value) =>
     day: "numeric",
     year: "numeric",
   });
-
-const blogs = data.value.map((blog) => ({
-  ...blog,
-  createdAt: date(blog.createdAt),
-}));
 </script>
 
 <template>
@@ -51,7 +46,7 @@ const blogs = data.value.map((blog) => ({
             </p>
             |
             <p class="text-italic text-sm p-2">
-              {{ blog.createdAt }}
+              {{ date(blog.createdAt) }}
             </p>
             |
             <p class="text-italic text-sm p-2 hover:cursor-pointer">

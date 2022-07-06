@@ -15,8 +15,8 @@
       <div class="m-2 dark:text-slate-200">
         <h1 class="text-2xl mt-2">Hi, I'm Jeroen</h1>
         <p class="mt-4 text-lg">
-          I'm a frontend developer focused on Vue.js, Nuxt, Tailwind and
-          Supabase. I blog about these technologies for fun. I'm living in the
+          I'm a frontend developer focused on Vue.js, Nuxt, React.js and
+          Next.js. I blog about these technologies for fun. I'm living in the
           Catalan countryside near Barcelona. If you think you might have a cool
           project to work on, contact me via
           <a
